@@ -17,6 +17,11 @@ Bureaucrat::~Bureaucrat(void)
 	std::cout << "(i) Destroying bureaucrat" << std::endl;
 }
 
+Bureaucrat::Bureaucrat(void) : _name("Jake"), _grade(150)
+{
+	std::cout << "(i) Bureaucrat created" << std::endl;
+}
+
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name)
 {
 	if (grade < 1)
@@ -81,11 +86,19 @@ void Bureaucrat::upgrade(void)
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)
 {
-	os
-		<< "Bureaucrat: name ("
-		<< b.getName()
-		<< ") grade("
-		<< b.getGrade()
-		<< ")"
-		<< std::endl;
+	return os
+		   << "Bureaucrat: name -> "
+		   << b.getName()
+		   << ", grade -> "
+		   << b.getGrade();
+}
+
+const char *Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return "Grade too high!";
+}
+
+const char *Bureaucrat::GradeTooLowException::what() const throw()
+{
+	return "Grade too low!";
 }

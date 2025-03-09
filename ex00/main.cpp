@@ -16,13 +16,22 @@ int main(void)
 {
 	try {
 		Bureaucrat a("Ana", 1);
-		Bureaucrat b = a;
-		Bureaucrat c(b);
-		Bureaucrat d("Bea", 16);
+		std::cout << a << std::endl;
 
-		std::cout << "Cheks, a, b and c should be the same: " << std::endl;
+		Bureaucrat b;
+		b = a;
+		b.downgrade();
+		std::cout << b << std::endl;
+		
+		Bureaucrat c(a);
+		// c.upgrade(); //exception GradeTooHigh
+		std::cout << c << std::endl;
+		
+		Bureaucrat d("Daniela", 16);
+		d.upgrade();
+		std::cout << d << std::endl;
 
-		Bureaucrat e("Paul", 151); //exception upon creation
+		Bureaucrat e("Paul", 151); //exception GradeTooLow
 		
 	} catch (const std::exception &e){
 		std::cerr << "Caught: " << e.what() << std::endl;

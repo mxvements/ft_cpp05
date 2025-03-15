@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 20:47:05 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/13 21:41:27 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:10:46 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,35 @@
 
 Form::~Form(void)
 {
-	std::cout << "(i) Destructing Form" << std::endl;
+	std::cout << "(i) Destroying Form" << std::endl;
 }
 
-Form::Form(void) : _is_signed(false), _grade_required(150), _name("default")
+Form::Form(void)
+	: _name("default"),
+	  _is_signed(false),
+	  _to_sign_grade(150),
+	  _to_exec_grade(150)
 {
 	std::cout << "(i) Creating default Form" << std::endl;
 }
 
-Form::Form(std::string name, int grade_required) : _name(name),
-												   _grade_required(grade_required),
-												   _is_signed(false)
+Form::Form(std::string name, int to_sign_grade, int to_exec_grade)
+	: _name(name),
+	  _is_signed(false),
+	  _to_sign_grade(to_sign_grade),
+	  _to_exec_grade(to_exec_grade)
 {
+	if (this->getToSignGrade() < 1 || this->getToExecGrade() < 1)
+		throw Form::GradeTooHighException();
+	else if (this->getToSignGrade() > 150 || this->getToExecGrade() > 150)
+		throw Form::GradeTooLowException();
 	std::cout << "(i) Creating Form" << std::endl;
 }
 
 Form::Form(const Form &src) : _name(src.getName()),
-							  _grade_required(src.getGradeRequired()),
-							  _is_signed(src.getGradeRequired())
+							  _is_signed(src.getToSignGrade()),
+							  _to_sign_grade(src.getToSignGrade()),
+							  _to_exec_grade(src.getToExecGrade())
 {
 	std::cout << "(i) Copy constructor called" << std::endl;
 }
@@ -61,35 +72,42 @@ void Form::setIsSigned(bool is_signed)
 	this->_is_signed = is_signed;
 }
 
-int Form::getGradeRequired(void) const
+int Form::getToSignGrade(void) const
 {
-	return this->_grade_required;
+	return this->_to_sign_grade;
 }
 
-void Form::beSigned(Bureaucrat &b)
+int Form::getToExecGrade(void) const
 {
-	if (b.getGrade() >= this->getGradeRequired())
+	return this->_to_exec_grade;
+}
+
+void Form::beSigned(const Bureaucrat &b)
+{
+	if (b.getGrade() > this->getToSignGrade())
 		throw Form::GradeTooLowException();
 	this->setIsSigned(true);
-	b.signForm();
 }
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return "Grade too high!";
+	return "(e) Grade too high!";
 }
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return "Grade too low!";
+	return "(e) Grade too low!";
 }
 
 std::ostream &operator<<(std::ostream &os, const Form &f)
 {
-	return os 
-			<< "Form : name -> "
-			<< f.getName()
-			<< f.getIsSigned()
-			<< " grade required -> "
-			<< f.getGradeRequired();
+	return os
+		   << "Form : name -> "
+		   << f.getName()
+		   << ", is signed -> "
+		   << f.getIsSigned()
+		   << ", grade required to sign -> "
+		   << f.getToSignGrade()
+		   << ", grade required to execute -> "
+		   << f.getToExecGrade();
 }

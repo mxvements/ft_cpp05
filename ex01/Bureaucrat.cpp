@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:04:40 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/13 21:42:09 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:10:48 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Bureaucrat::~Bureaucrat(void)
 {
-	std::cout << "(i) Destroying bureaucrat" << std::endl;
+	std::cout << "(i) Destroying Bureaucrat" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(void) : _name("Jake"), _grade(150)
@@ -84,15 +84,16 @@ void Bureaucrat::upgrade(void)
 	this->_grade = up;
 }
 
-void Bureaucrat::signForm(void)
+void Bureaucrat::signForm(Form &f) const
 {
-	//TODO
+	f.beSigned(*this);
+	std::cout << *this << " signed " << f << std::endl;
 }
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)
 {
 	return os
-		   << "Bureaucrat: name -> "
+		   << "Bureaucrat : name -> "
 		   << b.getName()
 		   << ", grade -> "
 		   << b.getGrade();
@@ -100,10 +101,10 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade too high!";
+	return "(e) Grade too high!";
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade too low!";
+	return "(e) Grade too low!";
 }

@@ -6,15 +6,16 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 11:51:49 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/13 21:14:15 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:54:59 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_H
-# define BUREAUCRAT_H
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 # include <iostream>
 # include <string>
+# include "Form.hpp"
 
 /**
  * custom exceptions in c++
@@ -26,6 +27,7 @@
  * calling what() retrieves and error message
  * noexcept/throw() is to garantee what() will not throw an exception
  */
+class Form;
 class Bureaucrat {
 	private:
 		const std::string	_name;
@@ -43,7 +45,7 @@ class Bureaucrat {
 
 		void downgrade(void);
 		void upgrade(void);
-		void signForm(void); //NEW
+		void signForm(Form &f) const;
 		
 		class GradeTooHighException : public std::exception
 		{

@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:04:40 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/08 13:22:53 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/15 16:00:10 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,10 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &b)
 
 const char *Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return "Grade too high!";
+	return "(e) Grade too high!";
 }
 
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return "Grade too low!";
+	return "(e) Grade too low!";
 }

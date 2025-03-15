@@ -6,7 +6,7 @@
 /*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:17 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/15 18:16:48 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/15 18:18:21 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ int main(void)
 		std::cout << ex.what() << std::endl;
 		std::cout << std::endl;
 	}
+	
+	b.upgrade();
+	b.signForm(a);
 	
 	return (0);
 }

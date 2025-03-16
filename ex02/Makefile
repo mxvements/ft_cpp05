@@ -20,7 +20,9 @@ FLAGS=-Wall -Wextra -Werror -g3 -std=c++98
 FILES =		main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
-			ShrubberyCreationForm.cpp
+			ShrubberyCreationForm.cpp \
+			RobotomyCreationForm.cpp \
+			PresidentialPardonForm.cpp
 
 OBJ_PATH =	.obj/
 OBJ =		$(FILES:%.cpp=$(OBJ_PATH)%.o)

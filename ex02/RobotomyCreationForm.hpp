@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   RobotomyCreationForm.hpp                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:42:48 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/15 20:07:52 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/16 19:20:52 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define ROBOTOMYCRETIONFORM_HPP	
 
 # include "AForm.hpp"
+# include <cstdlib>
+# include <ctime>  
 
 /**
  * • RobotomyRequestForm: Required grades: sign 72, exec 45
@@ -33,7 +35,9 @@ class RobotomyCreationForm : public AForm {
 		RobotomyCreationForm(const RobotomyCreationForm &src);
 		RobotomyCreationForm &operator=(const RobotomyCreationForm &src);
 
-		std::string getTraget(void) const;
+		std::string getTarget(void) const;
+
+		void action(void) const;
 		
 		class RobotomyFailureException : public std::exception
 		{
@@ -44,5 +48,7 @@ class RobotomyCreationForm : public AForm {
 	protected:
 	
 } ;
+
+std::ostream &operator<<(std::ostream &os, RobotomyCreationForm &src);
 
 #endif

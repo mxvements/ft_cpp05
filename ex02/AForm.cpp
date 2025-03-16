@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/13 20:47:05 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/15 21:24:46 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/16 18:12:15 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,20 @@ AForm::~AForm(void)
 	std::cout << "(i) Destroying Form" << std::endl;
 }
 
-AForm::AForm(void) : _name("default"), _is_signed(false), _to_sign_grade(150),
-	_to_exec_grade(150)
+AForm::AForm(void)
+	: _name("default"),
+	  _is_signed(false),
+	  _to_sign_grade(150),
+	  _to_exec_grade(150)
 {
 	std::cout << "(i) Creating default Form" << std::endl;
 }
 
-AForm::AForm(std::string name, int to_sign_grade,
-	int to_exec_grade) : _name(name), _is_signed(false),
-	_to_sign_grade(to_sign_grade), _to_exec_grade(to_exec_grade)
+AForm::AForm(std::string name, int to_sign_grade, int to_exec_grade)
+	: _name(name),
+	  _is_signed(false),
+	  _to_sign_grade(to_sign_grade),
+	  _to_exec_grade(to_exec_grade)
 {
 	if (this->getToSignGrade() < 1 || this->getToExecGrade() < 1)
 		throw AForm::GradeTooHighException();
@@ -34,9 +39,11 @@ AForm::AForm(std::string name, int to_sign_grade,
 	std::cout << "(i) Creating Form" << std::endl;
 }
 
-AForm::AForm(const AForm &src) : _name(src.getName()),
-	_is_signed(src.getToSignGrade()), _to_sign_grade(src.getToSignGrade()),
-	_to_exec_grade(src.getToExecGrade())
+AForm::AForm(const AForm &src)
+	: _name(src.getName()),
+	  _is_signed(src.getToSignGrade()),
+	  _to_sign_grade(src.getToSignGrade()),
+	  _to_exec_grade(src.getToExecGrade())
 {
 	std::cout << "(i) Copy constructor called" << std::endl;
 }
@@ -110,14 +117,13 @@ const char *AForm::NotSignedException::what() const throw()
 std::ostream &operator<<(std::ostream &os, const AForm &f)
 {
 	return (
-		os 
-		<< "Form : name -> " 
-		<< f.getName() 
-		<< ", is signed -> " 
-		<< f.getIsSigned() 
-		<< ", grade required to sign -> " 
-		<< f.getToSignGrade() 
-		<< ", grade required to execute -> " 
-		<< f.getToExecGrade()
-		);
+		os
+		<< "Form : name -> "
+		<< f.getName()
+		<< ", is signed -> "
+		<< f.getIsSigned()
+		<< ", grade required to sign -> "
+		<< f.getToSignGrade()
+		<< ", grade required to execute -> "
+		<< f.getToExecGrade());
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 19:43:21 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/15 20:08:24 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/16 20:25:43 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,14 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm(const PresidentialPardonForm &src);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &src);
 
-		std::string getTraget(void) const;
+		std::string getTarget(void) const;
+
+		void action(void) const;
 	
 	protected:
 	
 } ;
+
+std::ostream &operator<<(std::ostream &os, PresidentialPardonForm &src);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:09:38 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/15 21:25:33 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/16 18:14:46 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,37 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 	std::cout << "(i) Creating ShrubberyCreationForm" << std::endl;
 }
 
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &src)
+{
+	if (this != &src)
+	{
+		AForm::operator=(src);
+		this->_target = src.getTarget();
+	}
+	std::cout << "(i) Copy assignment called" << std::endl;
+	return (*this);
+}
+
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
+	: AForm("ShrubberyCreationForm", 147, 137),
+	  _target(src._target)
+{
+	std::cout << "(i) Copy constructor called" << std::endl;
+}
+
+// getters
 std::string ShrubberyCreationForm::getTarget(void) const
 {
 	return this->_target;
 }
 
+// exceptions
 const char *ShrubberyCreationForm::OpenFileException::what() const throw()
 {
 	return "(e) Open file exception";
 }
 
+// instance methods
 void ShrubberyCreationForm::action(void) const
 {
 	std::ofstream asciitree(this->getTarget().c_str());
@@ -62,6 +83,7 @@ void ShrubberyCreationForm::action(void) const
 	}
 }
 
+//<< operator
 std::ostream &operator<<(std::ostream &os, ShrubberyCreationForm &src)
 {
 	return (

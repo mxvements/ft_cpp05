@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:04:40 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/15 21:25:08 by luciama2         ###   ########.fr       */
+/*   Updated: 2025/03/16 18:12:29 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &src)
 	return (*this);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &src) : _name(src.getName()), _grade(src.getGrade())
+Bureaucrat::Bureaucrat(const Bureaucrat &src)
+	: _name(src.getName()),
+	  _grade(src.getGrade())
 {
 	std::cout << "(i) Copy constructor called" << std::endl;
 }

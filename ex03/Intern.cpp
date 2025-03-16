@@ -6,7 +6,7 @@
 /*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:34:03 by lucia             #+#    #+#             */
-/*   Updated: 2025/03/16 21:19:21 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/16 21:40:45 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ AForm *Intern::makeForm(std::string request, std::string target)
 	{
 		if (request == requests[i])
 		{
+			std::cout << "Intern creates " << request << std::endl;
 			return creators[i](target);
 		}
 	}

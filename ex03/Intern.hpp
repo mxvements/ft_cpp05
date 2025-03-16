@@ -6,7 +6,7 @@
 /*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:34:00 by lucia             #+#    #+#             */
-/*   Updated: 2025/03/16 21:06:51 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/16 21:56:20 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,14 @@ class AForm;
 
 class Intern {
 	private:
+		struct FormEntry {
+			std::string _name;
+			AForm *(*_creator)(std::string);
+		} ;
+		static const FormEntry _forms[3];
+		
 	protected:
+
 	public:
 		~Intern(void);
 		Intern(void);

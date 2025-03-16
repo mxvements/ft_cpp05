@@ -6,7 +6,7 @@
 /*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:17 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/16 21:37:03 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/16 21:59:50 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int main(void)
 {
 	try
 	{
+		std::cout << std::endl;
 		Intern newIntern;
-		AForm *f = newIntern.makeForm("random request", "target");
+		AForm *f = newIntern.makeForm("RandomRequest", "target");
 		delete f;
 	}
 	catch (const std::exception &e)
@@ -33,8 +34,9 @@ int main(void)
 
 	try
 	{
+		std::cout << std::endl;
 		Intern newIntern;
-		AForm *f = newIntern.makeForm("predisential pardon request", "Ana");
+		AForm *f = newIntern.makeForm("PresidentialPardonForm", "Ana");
 		Bureaucrat b("Pauline", 1);
 		// f->beSigned(b);
 		// f->execute(b);
@@ -50,8 +52,9 @@ int main(void)
 
 	try
 	{
+		std::cout << std::endl;
 		Intern newIntern;
-		AForm *f = newIntern.makeForm("shrubbery request", "trees");
+		AForm *f = newIntern.makeForm("ShrubberyCreationForm", "trees");
 		Bureaucrat b("Pauline", 1);
 		b.signForm(*f);
 		b.executeForm(*f);
@@ -65,8 +68,9 @@ int main(void)
 
 	try
 	{
+		std::cout << std::endl;
 		Intern newIntern;
-		AForm *f = newIntern.makeForm("shrubbery request", "random_folder/trees");
+		AForm *f = newIntern.makeForm("ShrubberyCreationForm", "random_folder/trees");
 		Bureaucrat b("Pauline", 1);
 		try
 		{

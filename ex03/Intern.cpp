@@ -6,7 +6,7 @@
 /*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:34:03 by lucia             #+#    #+#             */
-/*   Updated: 2025/03/16 21:40:45 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/16 21:57:48 by lucia            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 
 Intern::~Intern(void) {}
 Intern::Intern(void) {}
+
 Intern::Intern(const Intern &src)
 {
-	(void)src;
+	*this = src;
 }
 Intern &Intern::operator=(const Intern &src)
 {
@@ -29,31 +30,37 @@ Intern &Intern::operator=(const Intern &src)
 
 const char *Intern::WrongRequest::what() const throw()
 {
-	return "(e) Wrong request for the intern.\
-	Try \"shrubbery request\", \"robotomy request\"or \"predisential pardon request\"";
+	return "(e) Wrong request for the intern. Try \"shrubbery request\", \"robotomy request\"or \"predisential pardon request\"";
 }
+// static array of options for the intern class
+const Intern::FormEntry Intern::_forms[3] = {
+	{"PresidentialPardonForm", &PresidentialPardonForm::create},
+	{"RobotomyCreationForm", &RobotomyCreationForm::create},
+	{"ShrubberyCreationForm", &ShrubberyCreationForm::create}};
 
 AForm *Intern::makeForm(std::string request, std::string target)
-{
-	const std::string requests[3] = {
-		"shrubbery request",
-		"robotomy request",
-		"predisential pardon request"};
+{	
+	//first solution provided:
+	
+	// const std::string requests[3] = {
+	// 	"shrubbery request",
+	// 	"robotomy request",
+	// 	"predisential pardon request"};
 
-	AForm *(*creators[])(std::string) = {
-		&ShrubberyCreationForm::create,
-		&RobotomyCreationForm::create,
-		&PresidentialPardonForm::create};
+	// AForm *(*creators[])(std::string) = {
+	// 	&ShrubberyCreationForm::create,
+	// 	&RobotomyCreationForm::create,
+	// 	&PresidentialPardonForm::create};
 
 	for (int i = 0; i < 3; i++)
 	{
-		if (request == requests[i])
+		if (request == Intern::_forms[i]._name)
 		{
 			std::cout << "Intern creates " << request << std::endl;
-			return creators[i](target);
+			return Intern::_forms[i]._creator(target);
 		}
 	}
-	
+
 	throw Intern::WrongRequest();
 	// return (NULL);
 }

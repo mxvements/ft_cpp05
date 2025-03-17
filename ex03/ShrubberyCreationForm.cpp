@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 20:09:38 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/16 21:01:54 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/17 21:47:08 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(void)
-	: AForm("ShrubberyCreationForm", 147, 137),
+	: AForm("ShrubberyCreationForm", 145, 137),
 	  _target("none")
 {
 	std::cout << "(i) Creating a default ShrubberyCreationForm" << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-	: AForm("ShrubberyCreationForm", 147, 137),
+	: AForm("ShrubberyCreationForm", 145, 137),
 	  _target(target)
 {
 	std::cout << "(i) Creating ShrubberyCreationForm" << std::endl;
@@ -43,7 +43,7 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationF
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src)
-	: AForm("ShrubberyCreationForm", 147, 137),
+	: AForm("ShrubberyCreationForm", 145, 137),
 	  _target(src._target)
 {
 	std::cout << "(i) Copy constructor called" << std::endl;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:43:17 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/16 20:28:46 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/17 20:14:21 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,10 @@ int main(void)
 	{
 		ShrubberyCreationForm scf("trees");
 		Bureaucrat b("b", 142); //142 is lower than 137 but higher than 147, cannot execute form
-		b.signForm(scf);
-		b.executeForm(scf);
+		// b.signForm(scf);
+		// b.executeForm(scf);
+		scf.beSigned(b);
+		scf.execute(b);		
 	} catch (std::exception &ex)
 	{
 		std::cout << "Tried to execute a SCF with a Bureaucrat with a grade too low" << std::endl;
@@ -79,7 +81,7 @@ int main(void)
 	{
 		RobotomyCreationForm rcf("robot");
 		Bureaucrat b("b", 75); // 75, lower than 72, cannot sign
-		b.signForm(rcf);		
+		b.signForm(rcf);
 	}
 	catch(const std::exception& e)
 	{
@@ -92,8 +94,10 @@ int main(void)
 	{
 		RobotomyCreationForm rcf("robot");
 		Bureaucrat b("b", 50); // 50 is lower than 45, cannot execute
-		b.signForm(rcf);
-		b.executeForm(rcf);
+		// b.signForm(rcf);
+		// b.executeForm(rcf);
+		rcf.beSigned(b);
+		rcf.execute(b);
 	}
 	catch(const std::exception& e)
 	{

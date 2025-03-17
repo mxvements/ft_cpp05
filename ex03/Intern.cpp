@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/16 20:34:03 by lucia             #+#    #+#             */
-/*   Updated: 2025/03/16 21:57:48 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/17 20:17:45 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Intern &Intern::operator=(const Intern &src)
 
 const char *Intern::WrongRequest::what() const throw()
 {
-	return "(e) Wrong request for the intern. Try \"shrubbery request\", \"robotomy request\"or \"predisential pardon request\"";
+	return "(e) Wrong request for the intern. Try \"ShrubberyCreationForm\", \"RobotomyCreationForm\" or \"PresidentialPardonForm\"";
 }
 // static array of options for the intern class
 const Intern::FormEntry Intern::_forms[3] = {

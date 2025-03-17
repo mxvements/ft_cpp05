@@ -2,21 +2,6 @@ NAME=bureaucrat
 CC=c++
 FLAGS=-Wall -Wextra -Werror -g3 -std=c++98
 
-#compilers- c++, g++, clang++
-#c1r12s4% c++ -v      
-#Ubuntu clang version 12.0.1-19ubuntu3
-#Target: x86_64-pc-linux-gnu
-#Thread model: posix
-#InstalledDir: /usr/bin
-#Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/10
-#Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
-#Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/10
-#Found candidate GCC installation: /usr/lib/gcc/x86_64-linux-gnu/11
-#Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
-#Candidate multilib: .;@m64
-#Selected multilib: .;@m64
-
-
 FILES =		main.cpp \
 			Bureaucrat.cpp \
 			Form.cpp

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lucia <lucia@student.42.fr>                +#+  +:+       +#+        */
+/*   By: luciama2 <luciama2@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 12:04:40 by luciama2          #+#    #+#             */
-/*   Updated: 2025/03/16 18:12:29 by lucia            ###   ########.fr       */
+/*   Updated: 2025/03/18 19:35:53 by luciama2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void Bureaucrat::downgrade(void)
 	int down = this->getGrade() + 1;
 	if (down > 150)
 	{
-		throw Bureaucrat::GradeTooHighException();
+		throw Bureaucrat::GradeTooLowException();
 	}
 	this->_grade = down;
 }
